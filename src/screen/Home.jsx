@@ -626,15 +626,15 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "#FFF",
     height: "8.5%",
-    padding: 10,
+    padding: 7,
     borderRadius: 15
   },
   listContent: {
     paddingTop: 20,
   },
   rowtop: {
-    justifyContent: 'space-between',
-    marginBottom: 28,
+  gap:20,
+    marginBottom: 15,
   },
   big: {
     position: "absolute",
