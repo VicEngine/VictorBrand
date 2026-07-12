@@ -8,6 +8,9 @@ import Payment from "../screen/Payment";
 import Settings from "../screen/Settings";
 import Profile from "../screen/Profile";
 import Paymentmethods from "../screen/Paymentmethods";
+import Shippingaddress from "../screen/Shippingaddress";
+import Language from "../screen/Language";
+import Currency from "../screen/Currency";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +24,9 @@ export default function MainNavigator() {
             <Stack.Screen name="Settings" component={Settings} />
             <Stack.Screen name="Profile" component={Profile} />
             <Stack.Screen name="Paymentmethods" component={Paymentmethods} />
+            <Stack.Screen name="Shippingaddress" component={Shippingaddress} />
+            <Stack.Screen name="Language" component={Language} />
+            <Stack.Screen name="Currency" component={Currency} />
         </Stack.Navigator>
     );
 }

@@ -4,7 +4,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
 
 const Settings = () => {
-    const navigation =useNavigation()
+    const navigation = useNavigation()
 
     return (
         <SafeAreaProvider>
@@ -17,7 +17,7 @@ const Settings = () => {
                             Personal
                         </Text>
 
-                        <TouchableOpacity onPress={()=> navigation.navigate('Profile')} activeOpacity={0.5} style={styles.boxs}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Profile')} activeOpacity={0.5} style={styles.boxs}>
                             <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
                                 <Text style={styles.titlebox}>
                                     Profile
@@ -29,7 +29,7 @@ const Settings = () => {
                             />
                         </TouchableOpacity>
 
-                        <TouchableOpacity activeOpacity={0.5} style={styles.boxs}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Shippingaddress')} activeOpacity={0.5} style={styles.boxs}>
                             <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
                                 <Text style={styles.titlebox}>
                                     Shipping Address
@@ -77,7 +77,7 @@ const Settings = () => {
                             />
                         </TouchableOpacity>
 
-                        <TouchableOpacity activeOpacity={0.5} style={styles.boxs}>
+                        <TouchableOpacity onPress={() => navigation.navigate("Currency")} activeOpacity={0.5} style={styles.boxs}>
                             <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
                                 <Text style={styles.titlebox}>
                                     Currency
@@ -130,7 +130,7 @@ const Settings = () => {
                             Account
                         </Text>
 
-                        <TouchableOpacity activeOpacity={0.5} style={styles.boxs}>
+                        <TouchableOpacity onPress={()=>navigation.navigate('Language')} activeOpacity={0.5} style={styles.boxs}>
                             <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
                                 <Text style={styles.titlebox}>
                                     Language
