@@ -1,27 +1,27 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, FlatList, ScrollView } from 'react-native'
 import React from 'react'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
-
+import { useNavigation } from '@react-navigation/native'
 
 const Home = () => {
-
+const navigation = useNavigation()
 
 
   let Fruit = ["Banana", "Orange"]
 
   Fruit.push("Apple");
   Fruit.pop();
-  console.log("firstFruit",Fruit);
+  console.log("firstFruit", Fruit);
   Fruit.unshift("Cashew");
-  console.log( "Fruit",Fruit);
+  console.log("Fruit", Fruit);
 
   const allItems = ["bag", "shoes", "wire", "charger"]
   const previewItems = allItems.slice(0, 3);
-  console.log("allItems",previewItems); // Output: ["bag", "shoes"]
+  console.log("allItems", previewItems); // Output: ["bag", "shoes"]
 
-const theCart =["pen", "pencil", "eraser", "sharpener"]
-theCart.splice(1, 2, "marker", "highlighter");
-console.log("theCart",theCart); // Output: ["pen", "marker", "highlighter", "sharpener"]`
+  const theCart = ["pen", "pencil", "eraser", "sharpener"]
+  theCart.splice(1, 2, "marker", "highlighter");
+  console.log("theCart", theCart); // Output: ["pen", "marker", "highlighter", "sharpener"]`
   const Data = [
     {
       id: '1',
@@ -391,9 +391,18 @@ console.log("theCart",theCart); // Output: ["pen", "marker", "highlighter", "sha
             </View>
 
             <View style={{ flexDirection: "row", alignItems: "center", gap: 25 }}>
-              <Image source={require('../assets/icons/Icon.png')} />
-              <Image source={require('../assets/icons/Messages.png')} />
-              <Image source={require('../assets/icons/Frame.png')} />
+              <TouchableOpacity>
+                <Image source={require('../assets/icons/Icon.png')} />
+              </TouchableOpacity>
+
+              <TouchableOpacity>
+                <Image source={require('../assets/icons/Messages.png')} />
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={()=>navigation.navigate('Settings')}>
+                <Image source={require('../assets/icons/Frame.png')} />
+              </TouchableOpacity>
+
             </View>
           </View>
 
@@ -782,7 +791,7 @@ const styles = StyleSheet.create({
   },
   rowtop: {
 
-  gap:20,
+    gap: 20,
     marginBottom: 15,
   },
 })

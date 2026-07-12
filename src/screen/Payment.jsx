@@ -35,27 +35,27 @@ const Payment = ({ navigation }) => {
             time: 'Valid Until 6.20.20'
         },
     ]
-    
-        const data = ({ item }) => (
-            <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 4, paddingVertical: 6 }}>
-                <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
-                    <TouchableOpacity activeOpacity={0.5} style={{ width: 72, height: 72, backgroundColor: "#FFF", borderRadius: 36, alignItems: "center", justifyContent: "center" }}>
-                        <Image source={item.image} style={{ width: 56, height: 56, resizeMode: 'contain' }} />
-                        <View style={styles.num}>
-                            <Text style={{ fontSize: 16, fontWeight: "bold" }}>
-                                1
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
-                    <Text style={{ fontSize: 12, fontWeight: "regular", marginLeft: 6 }}>
-                        Lorem ipsum dolor sit amet{'\n'}consectetur.
-                    </Text>
-                </View>
-                <Text style={{ fontSize: 16, fontWeight: "bold" }}>
-                    $17,00
+
+    const data = ({ item }) => (
+        <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 4, paddingVertical: 6 }}>
+            <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+                <TouchableOpacity activeOpacity={0.5} style={{ width: 72, height: 72, backgroundColor: "#FFF", borderRadius: 36, alignItems: "center", justifyContent: "center" }}>
+                    <Image source={item.image} style={{ width: 56, height: 56, resizeMode: 'contain' }} />
+                    <View style={styles.num}>
+                        <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+                            1
+                        </Text>
+                    </View>
+                </TouchableOpacity>
+                <Text style={{ fontSize: 12, fontWeight: "regular", marginLeft: 6 }}>
+                    Lorem ipsum dolor sit amet{'\n'}consectetur.
                 </Text>
             </View>
-        )
+            <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+                $17,00
+            </Text>
+        </View>
+    )
 
 
     const active = ({ item }) => (
@@ -113,7 +113,7 @@ const Payment = ({ navigation }) => {
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
 
-                <ScrollView>
+                <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={{ padding: 10 }}>
                         <Text style={{ fontSize: 28, fontWeight: "bold" }}>Payment</Text>
 
@@ -285,8 +285,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#F9F9F9",
         borderRadius: 15,
         padding: 10,
-        marginTop:10,
-        
+        marginTop: 10,
+
 
     },
     card1: {
@@ -296,8 +296,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#F9F9F9",
         borderRadius: 15,
         padding: 10,
-        marginTop:10,
-        
+        marginTop: 10,
+
 
     },
     num: {
@@ -305,7 +305,7 @@ const styles = StyleSheet.create({
         height: 30,
         borderRadius: 15,
         backgroundColor: "#E5EBFC",
-                                
+
         alignItems: "center",
         justifyContent: "center",
         position: "absolute",
