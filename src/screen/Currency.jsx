@@ -1,62 +1,56 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
+import { useNavigation, useRoute } from '@react-navigation/native'
 
 const Currency = () => {
+    const navigation = useNavigation()
+    const route = useRoute()
+    const [selectedCurrency, setSelectedCurrency] = useState(route.params?.selectedCurrency || '$ USD')
+    const currencies = ['$ USD', '€ EURO', '₫ VND', '₽ RUB']
+
+    useEffect(() => {
+        if (route.params?.selectedCurrency) {
+            setSelectedCurrency(route.params.selectedCurrency)
+        }
+    }, [route.params?.selectedCurrency])
+
+    const handleSelectCurrency = (currency) => {
+        setSelectedCurrency(currency)
+        navigation.navigate('Settings', {
+            selectedCurrency: currency,
+            selectedLanguage: route.params?.selectedLanguage,
+        })
+    }
+
     return (
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
-                <Text style={{ fontSize: 28, fontWeight: "bold" }}>Settings</Text>
-                <Text style={{ fontSize: 16, fontWeight: "medium", marginTop: 10 }}>Currency</Text>
+                <Text style={{ fontSize: 28, fontWeight: 'bold' }}>Settings</Text>
+                <Text style={{ fontSize: 16, fontWeight: 'medium', marginTop: 10 }}>Currency</Text>
 
-                <TouchableOpacity style={styles.box}>
-                    <View style={{flexDirection:"row",justifyContent:"space-between"}}>
-                    <Text>
-                        $ USD
-                    </Text>
-                    <TouchableOpacity>
-                    <Image source={require('../assets/images/Check1.png')} />
-                    </TouchableOpacity>
-                    </View>
-                    
-                </TouchableOpacity>
+                {currencies.map((currency) => {
+                    const isSelected = selectedCurrency === currency
 
-                <TouchableOpacity style={styles.box}>
-                    <View style={{flexDirection:"row",justifyContent:"space-between"}}>
-                    <Text>
-                        € EURO
-                    </Text>
-                    <TouchableOpacity>
-                    <Image source={require('../assets/images/Check2.png')} />
-                    </TouchableOpacity>
-                    </View>
-                    
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.box}>
-                    <View style={{flexDirection:"row",justifyContent:"space-between"}}>
-                    <Text>
-                        ₫ VND
-                    </Text>
-                    <TouchableOpacity>
-                    <Image source={require('../assets/images/Check2.png')} />
-                    </TouchableOpacity>
-                    </View>
-                    
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.box}>
-                    <View style={{flexDirection:"row",justifyContent:"space-between"}}>
-                    <Text>
-                        ₽ RUB
-                    </Text>
-                    <TouchableOpacity>
-                    <Image source={require('../assets/images/Check2.png')} />
-                    </TouchableOpacity>
-                    </View>
-                    
-                </TouchableOpacity>
-
+                    return (
+                        <TouchableOpacity
+                            key={currency}
+                            onPress={() => handleSelectCurrency(currency)}
+                            style={[styles.box, isSelected && styles.selectedBox]}
+                        >
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <Text>{currency}</Text>
+                                <Image
+                                    source={
+                                        isSelected
+                                            ? require('../assets/images/Check1.png')
+                                            : require('../assets/images/Check2.png')
+                                    }
+                                />
+                            </View>
+                        </TouchableOpacity>
+                    )
+                })}
 
             </SafeAreaView>
         </SafeAreaProvider>
@@ -75,9 +69,12 @@ const styles = StyleSheet.create({
         width: "100%",
         height: 50,
         backgroundColor: "#F9F9F9",
-        borderRadius:15,
-        marginTop:20,
-        justifyContent:"center",
-        paddingHorizontal:15
+        borderRadius: 15,
+        marginTop: 20,
+        justifyContent: "center",
+        paddingHorizontal: 15
+    },
+    selectedBox: {
+        backgroundColor: '#E5EBFC',
     },
 })

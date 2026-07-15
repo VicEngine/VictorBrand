@@ -11,7 +11,7 @@ export default function Shoppe() {
             <SafeAreaView style={styles.container}>
                 <View style={{
                     height: 134, width: 134, borderRadius: 134,
-                    backgroundColor: '#FFFFFF', alignItems: "center", justifyContent: 'center',
+                    backgroundColor: '#FFFFFF', alignItems: "center", justifyContent: 'center',elevation:5,shadowRadius:10,shadowOpacity:0.2
                 }}>
                     <Image source={require('../../assets/images/Group.png')} />
                 </View>

@@ -58,7 +58,7 @@ const CreateAccount = () => {
               <FormInput
                 title="email"
                 placeholder="Email"
-                placeholderTextColor="#F8F8F8"
+                placeholderTextColor="#D2D2D2"
                 value={email}
                 onChangeText={setEmail}
                 keyboardType='email-address'

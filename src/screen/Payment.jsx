@@ -77,7 +77,7 @@ const Payment = ({ navigation }) => {
                     </View>
 
                     <View
-                        style={{ borderBottomWidth: 2, borderColor: "#004CFF", borderStyle: "dashed", marginTop: 6, position: "relative", top: 45, marginLeft: 6, marginRight: 6 }}
+                        style={{ borderBottomWidth: 2, borderColor: "#004CFF", borderStyle: "dashed", marginTop: 6, position: "relative", top: 45, marginLeft: 6, marginRight: 5 }}
                     />
 
 

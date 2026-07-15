@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import Home from "../screen/User";
+import Home from "../screen/Home";
 import Auth from "./AuthStack";
 import TabNavigator from "./TabNavigator"
 import Flashsale from "../screen/Flashsale";
@@ -11,7 +11,7 @@ import Paymentmethods from "../screen/Paymentmethods";
 import Shippingaddress from "../screen/Shippingaddress";
 import Language from "../screen/Language";
 import Currency from "../screen/Currency";
-
+import Sizes from "../screen/Sizes";
 const Stack = createNativeStackNavigator();
 
 export default function MainNavigator() {
@@ -27,6 +27,7 @@ export default function MainNavigator() {
             <Stack.Screen name="Shippingaddress" component={Shippingaddress} />
             <Stack.Screen name="Language" component={Language} />
             <Stack.Screen name="Currency" component={Currency} />
+            <Stack.Screen name="Sizes" component={Sizes} />
         </Stack.Navigator>
     );
 }

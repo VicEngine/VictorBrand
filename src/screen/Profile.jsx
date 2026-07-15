@@ -1,7 +1,9 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput,KeyboardAvoidingView } from 'react-native'
 import React from 'react'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
+
 const Profile = () => {
+    
     return (
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>

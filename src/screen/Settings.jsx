@@ -1,10 +1,26 @@
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image,Modal } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 
 const Settings = () => {
     const navigation = useNavigation()
+    const route = useRoute()
+    const [selectedLanguage, setSelectedLanguage] = useState(route.params?.selectedLanguage || 'English')
+    const [selectedCurrency, setSelectedCurrency] = useState(route.params?.selectedCurrency || '$ USD')
+    const [selectedSize, setSelectedSize] = useState(route.params?.selectedSize || 'UK')
+
+    useEffect(() => {
+        if (route.params?.selectedLanguage) {
+            setSelectedLanguage(route.params.selectedLanguage)
+        }
+        if (route.params?.selectedCurrency) {
+            setSelectedCurrency(route.params.selectedCurrency)
+        }
+        if (route.params?.selectedSize) {
+            setSelectedSize(route.params.selectedSize)
+        }
+    }, [route.params?.selectedLanguage, route.params?.selectedCurrency, route.params?.selectedSize])
 
     return (
         <SafeAreaProvider>
@@ -77,14 +93,14 @@ const Settings = () => {
                             />
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={() => navigation.navigate("Currency")} activeOpacity={0.5} style={styles.boxs}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Currency', { selectedCurrency, })} activeOpacity={0.5} style={styles.boxs}>
                             <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
                                 <Text style={styles.titlebox}>
                                     Currency
                                 </Text>
                                 <View style={styles.subtitlebox}>
                                     <Text style={{ fontSize: 15, fontWeight: "regular" }}>
-                                        $ USD
+                                        {selectedCurrency}
                                     </Text>
                                     <Image source={require('../assets/icons/right-arrow.png')} />
                                 </View>
@@ -93,14 +109,14 @@ const Settings = () => {
                             />
                         </TouchableOpacity>
 
-                        <TouchableOpacity activeOpacity={0.5} style={styles.boxs}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Sizes', { selectedSize, })} activeOpacity={0.5} style={styles.boxs}>
                             <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
                                 <Text style={styles.titlebox}>
                                     Sizes
                                 </Text>
                                 <View style={styles.subtitlebox}>
                                     <Text style={{ fontSize: 15, fontWeight: "regular" }}>
-                                        Uk
+                                        {selectedSize}
                                     </Text>
                                     <Image source={require('../assets/icons/right-arrow.png')} />
                                 </View>
@@ -130,14 +146,14 @@ const Settings = () => {
                             Account
                         </Text>
 
-                        <TouchableOpacity onPress={()=>navigation.navigate('Language')} activeOpacity={0.5} style={styles.boxs}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Language', { selectedLanguage, selectedCurrency })} activeOpacity={0.5} style={styles.boxs}>
                             <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
                                 <Text style={styles.titlebox}>
                                     Language
                                 </Text>
                                 <View style={styles.subtitlebox}>
                                     <Text style={{ fontSize: 15, fontWeight: "regular" }}>
-                                        English
+                                        {selectedLanguage}
                                     </Text>
                                     <Image source={require('../assets/icons/right-arrow.png')} />
                                 </View>
@@ -176,6 +192,12 @@ const Settings = () => {
                         Version 1.0 April, 2020
                     </Text>
                 </ScrollView>
+                {/* <Modal>
+
+                    <View style={styles.modDelete}>
+
+                    </View>
+                </Modal> */}
             </SafeAreaView>
         </SafeAreaProvider>
     )
@@ -207,4 +229,11 @@ const styles = StyleSheet.create({
         marginVertical: 20,
         fontWeight: "normal",
     },
+modDelete:{
+    backgroundColor:"red",
+    width:"90%",
+    height:"40%",
+    justifyContent:"center",
+    alignSelf:"center"
+},
 })

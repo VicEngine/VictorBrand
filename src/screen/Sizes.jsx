@@ -3,40 +3,44 @@ import React, { useEffect, useState } from 'react'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation, useRoute } from '@react-navigation/native'
 
-const Language = () => {
+const Sizes = () => {
     const navigation = useNavigation()
     const route = useRoute()
-    const [selectedLanguage, setSelectedLanguage] = useState(route.params?.selectedLanguage || 'English')
-    const languages = ['English', 'Français', 'PycckͶͶ', 'Tiêng Viêt']
+    const [selectedSize, setSelectedSize] = useState(route.params?.selectedSize || 'UK')
+    const sizes = ['US', 'EU', 'UK']
 
     useEffect(() => {
-        if (route.params?.selectedLanguage) {
-            setSelectedLanguage(route.params.selectedLanguage)
+        if (route.params?.selectedSize) {
+            setSelectedSize(route.params.selectedSize)
         }
-    }, [route.params?.selectedLanguage])
+    }, [route.params?.selectedSize])
 
-    const handleSelectLanguage = (language) => {
-        setSelectedLanguage(language)
-        navigation.navigate('Settings', { selectedLanguage: language })
+    const handleSelectSize = (size) => {
+        setSelectedSize(size)
+        navigation.navigate('Settings', {
+            selectedSize: size,
+            selectedLanguage: route.params?.selectedLanguage,
+            selectedCurrency: route.params?.selectedCurrency,
+        })
     }
 
     return (
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
-                <Text style={{ fontSize: 28, fontWeight: "bold" }}>Settings</Text>
-                <Text style={{ fontSize: 16, fontWeight: "medium", marginTop: 10 }}>Language</Text>
+                <Text style={{ fontSize: 28, fontWeight: 'bold' }}>Settings</Text>
+                <Text style={{ fontSize: 16, fontWeight: 'medium', marginTop: 10 }}>Sizes</Text>
 
-                {languages.map((language) => {
-                    const isSelected = selectedLanguage === language
+                {sizes.map((size) => {
+                    const isSelected = selectedSize === size
 
                     return (
                         <TouchableOpacity
-                            key={language}
-                            onPress={() => handleSelectLanguage(language)}
+                            key={size}
+                            onPress={() => handleSelectSize(size)}
                             style={[styles.box, isSelected && styles.selectedBox]}
                         >
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <Text>{language}</Text>
+                                <Text>{size}</Text>
                                 <Image
                                     source={
                                         isSelected
@@ -54,7 +58,7 @@ const Language = () => {
     )
 }
 
-export default Language
+export default Sizes
 
 const styles = StyleSheet.create({
     container: {
