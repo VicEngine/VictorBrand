@@ -239,9 +239,9 @@ const User = () => {
   )
   const newItem = ({ item }) => (
     <View>
-      <View style={{ width: "90%", height: 140, backgroundColor: "#FFFF", alignItems: "center", justifyContent: "center", borderRadius: 15, marginTop: 20, }}>
+      <TouchableOpacity onPress={() => navigation.navigate ('Product')} style={{ width: "90%", height: 140, backgroundColor: "#FFFF", alignItems: "center", justifyContent: "center", borderRadius: 15, marginTop: 20, }}>
         <Image source={item.image} style={{ borderRadius: 15 }} />
-      </View>
+      </TouchableOpacity>
       <Text style={{ marginTop: 6, fontSize: 16, fontWeight: "light", color: "#202020" }}>
         Lerem ipsum dolor sit{'\n'}amet consectetur.
       </Text>

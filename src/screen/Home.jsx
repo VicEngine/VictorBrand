@@ -284,11 +284,11 @@ const navigation = useNavigation()
   const NewItem = ({ item }) => (
     <View>
       <View style={styles.space}>
-        <TouchableOpacity activeOpacity={0.9} style={styles.pro}>
+        <TouchableOpacity  activeOpacity={0.9} onPress={() => navigation.navigate ('Product')}  style={styles.pro}>
           <Image source={item.image} />
         </TouchableOpacity>
         <Text style={styles.protitle}>
-          {item.title}
+           Lerem ipsum dolor sit{'\n'}amet consectetur.
         </Text>
         <Text style={styles.proprice}>
           {item.price}

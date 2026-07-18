@@ -12,6 +12,7 @@ import Shippingaddress from "../screen/Shippingaddress";
 import Language from "../screen/Language";
 import Currency from "../screen/Currency";
 import Sizes from "../screen/Sizes";
+import Product from "../screen/Product";
 const Stack = createNativeStackNavigator();
 
 export default function MainNavigator() {
@@ -28,6 +29,7 @@ export default function MainNavigator() {
             <Stack.Screen name="Language" component={Language} />
             <Stack.Screen name="Currency" component={Currency} />
             <Stack.Screen name="Sizes" component={Sizes} />
+            <Stack.Screen name="Product" component={Product} />
         </Stack.Navigator>
     );
 }
