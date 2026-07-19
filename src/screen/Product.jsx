@@ -143,23 +143,66 @@ const Product = () => {
                 <Text style={styles.step3}>
                     Rating & Reviews
                 </Text>
+                <View style={styles.step9Container}>
+                    <View style={styles.container1}>
+                        {Array.from({ length: maxStars }).map((_, index) => {
+                            const isFilled = index < rating;
 
-                <View style={styles.container1}>
-                    {Array.from({ length: maxStars }).map((_, index) => {
-                        const isFilled = index < rating;
-
-                        return (
-                            <Star
-                                key={index}
-                                size={22}
-                                color={starColor}
-                                fill={isFilled ? starColor : 'transparent'}
-                                strokeWidth={2}
-                                style={styles.star}
-                            />
-                        );
-                    })}
+                            return (
+                                <Star
+                                    key={index}
+                                    size={22}
+                                    color={starColor}
+                                    fill={isFilled ? starColor : 'transparent'}
+                                    strokeWidth={2}
+                                    style={styles.star}
+                                />
+                            );
+                        })}
+                    </View>
+                    <View style={styles.step9}>
+                        <Text style={styles.substep9}>
+                            4/5
+                        </Text>
+                    </View>
                 </View>
+
+                <View style={styles.step10Container}>
+
+                    <View style={styles.step10}>
+                        <Image source={require('../assets/images/pro58.png')} style={styles.substep10} />
+                    </View>
+
+                    <View style={styles.substep10Container}>
+                        <Text style={styles.step10text1}>
+                            Veronika
+                        </Text>
+                        <View style={styles.container1}>
+                            {Array.from({ length: maxStars }).map((_, index) => {
+                                const isFilled = index < rating;
+
+                                return (
+                                    <Star
+                                        key={index}
+                                        size={22}
+                                        color={starColor}
+                                        fill={isFilled ? starColor : 'transparent'}
+                                        strokeWidth={2}
+                                        style={styles.star}
+                                    />
+                                );
+                            })}
+                        </View>
+                        <Text style={styles.step10text2}>
+                            Lorem ipsum dolor sit amet, consetetur sadipscing {'\n'} elitr, sed diam nonumy eirmod tempor invidunt ut {'\n'}labore et dolore magna aliquyam erat, sed ...
+                        </Text>
+                    </View>
+                </View>
+               <TouchableOpacity activeOpacity={0.5} style={styles.step11}>
+                <Text style={styles.step11text}>
+                    View All Reviews
+                </Text>
+                </TouchableOpacity> 
             </View>
         </ScrollView>
     )
@@ -334,10 +377,80 @@ const styles = StyleSheet.create({
     },
     container1: {
         flexDirection: 'row',
-      marginTop:20  
+
     },
     star: {
         marginHorizontal: 4,
+    },
+    step9Container: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginTop: 20,
+        gap: 20
+    },
+    step9: {
+        width: 40,
+        height: 20,
+        borderRadius: 5,
+        backgroundColor: "#DFE9FF",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    substep9: {
+        fontSize: 14,
+        fontWeight: "bold",
+        fontFamily: "Raleway",
+        color: "#202020"
+    },
+    step10Container: {
+        flexDirection: "row",
+        gap: 20,
+        marginTop: 15
+    },
+    step10: {
+        width: 45,
+        height: 45,
+        borderRadius: 22,
+        backgroundColor: '#FFFFFF',
+        alignItems: "center",
+        justifyContent: "center",
+        elevation: 1,
+        shadowOpacity: 0.2,
 
+    },
+    substep10: {
+        borderRadius: 25
+    },
+    substep10Container: {
+        justifyContent: "center",
+    },
+    step10text1: {
+        fontSize: 16,
+        fontFamily: "Raleway",
+        fontWeight: "bold",
+        marginBottom: 8
+    },
+    step10text2: {
+        fontSize: 12,
+        fontWeight: "regular",
+        fontFamily: "Nunito Sans",
+        marginTop: 8,
+    },
+    step11:{
+        width:"100%",
+        height:55,
+        alignItems:"center",
+        justifyContent:'center',
+        backgroundColor:"#004CFF",
+        borderRadius:15,
+        marginTop:15,
+        elevation:4,
+        shadowOpacity:0.4
+    },
+    step11text:{
+        fontSize:16,
+        fontWeight:'light',
+        fontFamily:"Nunito Sans",
+        color:"#F3F3F3"
     },
 })
