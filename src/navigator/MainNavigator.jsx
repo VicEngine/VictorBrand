@@ -13,6 +13,10 @@ import Language from "../screen/Language";
 import Currency from "../screen/Currency";
 import Sizes from "../screen/Sizes";
 import Product from "../screen/Product";
+import Reviews from "../screen/Reviews";
+import Voucher from "../screen/Voucher";
+import Recieve from "../screen/Recieve";
+
 const Stack = createNativeStackNavigator();
 
 export default function MainNavigator() {
@@ -30,6 +34,9 @@ export default function MainNavigator() {
             <Stack.Screen name="Currency" component={Currency} />
             <Stack.Screen name="Sizes" component={Sizes} />
             <Stack.Screen name="Product" component={Product} />
+            <Stack.Screen name="Reviews" component={Reviews} />
+            <Stack.Screen name="Voucher" component={Voucher} />
+            <Stack.Screen name="Recieve" component={Recieve} />
         </Stack.Navigator>
     );
 }

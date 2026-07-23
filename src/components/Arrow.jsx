@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View,TouchableOpacity,Image } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 
-const Arrow = (onPress) => {
+const Arrow = ({ onPress }) => {
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
             <Image source={require('../assets/images/Arrow.png')} />
         </TouchableOpacity>
     )

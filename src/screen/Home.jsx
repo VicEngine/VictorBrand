@@ -391,7 +391,7 @@ const navigation = useNavigation()
             </View>
 
             <View style={{ flexDirection: "row", alignItems: "center", gap: 25 }}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=>navigation.navigate('Voucher')}>
                 <Image source={require('../assets/icons/Icon.png')} />
               </TouchableOpacity>
 
@@ -448,14 +448,14 @@ const navigation = useNavigation()
             </TouchableOpacity>
 
 
-            <TouchableOpacity style={{ width: 118, height: 35, backgroundColor: "#E5EBFC", borderRadius: 20, alignItems: "center", justifyContent: "center" }} >
+            <TouchableOpacity onPress={()=>navigation.navigate('Recieve')} style={{ width: 118, height: 35, backgroundColor: "#E5EBFC", borderRadius: 20, alignItems: "center", justifyContent: "center" }} >
               <Text style={{ color: '#0042E0', fontSize: 16, fontWeight: "medium" }}>
                 To Recieve
               </Text>
               <View style={styles.dot}></View>
             </TouchableOpacity>
 
-            <TouchableOpacity style={{ width: 118, height: 35, backgroundColor: "#E5EBFC", borderRadius: 20, alignItems: "center", justifyContent: "center" }} >
+            <TouchableOpacity onPress={()=>navigation.navigate('Reviews')} style={{ width: 118, height: 35, backgroundColor: "#E5EBFC", borderRadius: 20, alignItems: "center", justifyContent: "center" }} >
               <Text style={{ color: '#0042E0', fontSize: 16, fontWeight: "medium" }}>
                 To Review
               </Text>
