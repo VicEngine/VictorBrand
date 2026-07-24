@@ -4,13 +4,11 @@ import {
   ScrollView, TextInput
 }
   from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import FormInput from '../../components/FormInput'
-import { useState } from 'react'
 import { Ionicons } from '@expo/vector-icons'
-import { useNavigation } from '@react-navigation/native'
-import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
+import { useNavigation, useRoute } from '@react-navigation/native'
 import Button from '../../components/Button';
 import Cut from '../../components/Cut';
 
@@ -25,13 +23,21 @@ const CreateAccount = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [hidePassword, setHidePassword] = useState(true);
   const [phone, setPhone] = useState('');
+  const [capturedPhoto, setCapturedPhoto] = useState(null);
+  const navigation = useNavigation();
+  const route = useRoute();
+
   const onSelectCountry = (country) => {
     setCountryCode(country.cca2);
     setCallingCode(country.callingCode[0]);
   };
   const fullPhoneNumber = `+${callingCode}${phone}`;
 
-  const navigation = useNavigation();
+  useEffect(() => {
+    if (route.params?.photoUri) {
+      setCapturedPhoto(route.params.photoUri);
+    }
+  }, [route.params?.photoUri]);
 
   return (
 
@@ -49,9 +55,14 @@ const CreateAccount = () => {
         </View>
 
         <View style={{ flex: 1, }}>
-          <TouchableOpacity style={styles.camera}>
-            <Image source={require('../../assets/images/Group02.png')} />
+          <TouchableOpacity onPress={() => navigation.navigate('Camera')} style={styles.camera}>
+            {capturedPhoto ? (
+              <Image source={{ uri: capturedPhoto }} style={styles.photoPreview} />
+            ) : (
+              <Image source={require('../../assets/images/Group02.png')} />
+            )}
           </TouchableOpacity>
+
 
           <View style={{ gap: 20 }}>
             <View style={styles.FormInput}>
@@ -145,6 +156,17 @@ const styles = StyleSheet.create({
   camera: {
     paddingLeft: 35,
     marginTop: 67,
+  },
+  photoPreviewContainer: {
+    marginTop: 16,
+    alignItems: 'center',
+  },
+  photoPreview: {
+    width: 140,
+    height: 140,
+    borderRadius: 70,
+    borderWidth: 2,
+    borderColor: '#3B6EF5',
   },
   password: {
     width: 335,

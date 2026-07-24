@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, } from 'react-native'
+import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
 import Arrow from '../components/Arrow'
 const Recieve = () => {
   const ORDERS_DATA = [
@@ -77,9 +78,9 @@ const Recieve = () => {
       deliveryType: 'Standard Delivery',
       status: 'Shipped',
       itemCount: 4,
-      images: 
+      images:
         require("../assets/images/pro69.png"),
-    
+
     },
 
   ];
@@ -248,12 +249,12 @@ const Recieve = () => {
       <View style={styles.cardContainer}>
         {/* 1. Left Collage Grid */}
         <View style={styles.collageContainer}>
-          <View style={{ padding:10 }}>
-    
-              <Image source={item.images} style={{height:100,transform:[{scaleY:1}]}}/>
-            
+          <View style={{ padding: 10 }}>
 
-          
+            <Image source={item.images} style={{ height: 100, transform: [{ scaleY: 1 }] }} />
+
+
+
 
           </View>
         </View>
@@ -284,85 +285,88 @@ const Recieve = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.header}>
+          <View style={styles.userInfo}>
 
+            <View style={styles.pro}>
+              <Image
+                source={require('../assets/images/pro58.png')}
+                style={styles.avatar}
+              />
+            </View>
 
-      {/* Header */}
-      <View style={styles.header}>
-        <View style={styles.userInfo}>
-
-          <View style={styles.pro}>
-            <Image
-              source={require('../assets/images/pro58.png')}
-              style={styles.avatar}
-            />
+            <View>
+              <Text style={styles.headerTitle}>To Receive</Text>
+              <Text style={styles.headerSubtitle}>My Orders</Text>
+            </View>
           </View>
 
-          <View>
-            <Text style={styles.headerTitle}>To Receive</Text>
-            <Text style={styles.headerSubtitle}>My Orders</Text>
+          <View style={styles.headerActions}>
+            <TouchableOpacity>
+              <Image source={require('../assets/icons/Icon.png')} />
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Image source={require('../assets/icons/Messages.png')} />
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Image source={require('../assets/icons/Frame.png')} />
+            </TouchableOpacity>
+
           </View>
         </View>
-
-        <View style={styles.headerActions}>
-          <TouchableOpacity>
-            <Image source={require('../assets/icons/Icon.png')} />
-          </TouchableOpacity>
-
-          <TouchableOpacity>
-            <Image source={require('../assets/icons/Messages.png')} />
-          </TouchableOpacity>
-
-          <TouchableOpacity>
-            <Image source={require('../assets/icons/Frame.png')} />
-          </TouchableOpacity>
-
+        <View style={styles.screen}>
+          <FlatList
+            data={ORDERS_DATA}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => <OrderCard item={item} />}
+            contentContainerStyle={styles.listPadding}
+            scrollEnabled={false}
+          />
         </View>
-      </View>
-      <View style={styles.screen}>
-        <FlatList
-          data={ORDERS_DATA}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <OrderCard item={item} />}
-          contentContainerStyle={styles.listPadding}
-        />
-      </View>
 
-      <View style={styles.screen}>
-        <FlatList
-          data={DATA}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <DataCard item={item} />}
-          contentContainerStyle={styles.listPadding}
-        />
-      </View>
+        <View style={styles.screen}>
+          <FlatList
+            data={DATA}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => <DataCard item={item} />}
+            contentContainerStyle={styles.listPadding}
+            scrollEnabled={false}
+          />
+        </View>
 
-      <View style={styles.screen}>
-        <FlatList
-          data={DATA1}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <DataCard1 item={item} />}
-          contentContainerStyle={styles.listPadding}
-        />
-      </View>
+        <View style={styles.screen}>
+          <FlatList
+            data={DATA1}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => <DataCard1 item={item} />}
+            contentContainerStyle={styles.listPadding}
+            scrollEnabled={false}
+          />
+        </View>
 
-      <View style={styles.screen}>
-        <FlatList
-          data={DATA2}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <DataCard2 item={item} />}
-          contentContainerStyle={styles.listPadding}
-        />
-      </View>
+        <View style={styles.screen}>
+          <FlatList
+            data={DATA2}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => <DataCard2 item={item} />}
+            contentContainerStyle={styles.listPadding}
+            scrollEnabled={false}
+          />
+        </View>
 
-      <View style={styles.screen}>
-        <FlatList
-          data={DATA3}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <DataCard3 item={item} />}
-          contentContainerStyle={styles.listPadding}
-        />
-      </View>
-
+        <View style={styles.screen}>
+          <FlatList
+            data={DATA3}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => <DataCard3 item={item} />}
+            contentContainerStyle={styles.listPadding}
+            scrollEnabled={false}
+          />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 

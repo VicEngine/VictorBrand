@@ -790,7 +790,6 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   rowtop: {
-
     gap: 20,
     marginBottom: 15,
   },

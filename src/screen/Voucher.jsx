@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image, FlatList } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Image, FlatList, ImageBackground } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
@@ -8,25 +8,25 @@ const Voucher = () => {
 
 
 
-    const [activeTab, setActiveTab] = useState('active'); // 'active' | 'progress'
+    const [activeTab, setActiveTab] = useState('active');
 
-    // ---- Sample data — swap with your API data ----
-    const VOUCHERS = [
+
+    const Active = [
         {
-            id: 'v1',
-            title: 'First Purchase',
-            subtitle: '5% off for your next order',
-            icon: 'bag-handle',
-            validUntil: '5.16.20',
-        },
-        {
-            id: 'v2',
+            id: '1',
+            image: require('../assets/icons/bag1.png'),
             title: 'Gift From Customer Care',
-            subtitle: '15% off your next purchase',
-            icon: 'gift',
-            validUntil: '6.20.20',
+            discount: '5% off for your next order',
+            time: 'Valid Until 5.16.20'
         },
-    ];
+        {
+            id: '2',
+            image: require('../assets/icons/box.png'),
+            title: 'Loyal Customer',
+            discount: '15% off for your next order',
+            time: 'Valid Until 6.20.20'
+        },
+    ]
 
     const BADGES = [
         {
@@ -79,30 +79,31 @@ const Voucher = () => {
         },
     ];
 
-    // ---- Header ----
+
     const Header = () => (
         <View style={styles.headerRow}>
             <Image
-                source={{ uri: 'https://i.pravatar.cc/150?img=8' }}
+                source={require('../assets/images/pro52.png')}
                 style={styles.avatar}
             />
             <Text style={styles.headerTitle}>Vouchers</Text>
             <View style={styles.headerIcons}>
-                <TouchableOpacity style={styles.iconBtnFilled}>
-                    <MaterialCommunityIcons name="ticket-outline" size={18} color="#fff" />
+                <TouchableOpacity>
+                    <Image source={require('../assets/icons/Icon.png')} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.iconBtnLight}>
-                    <Ionicons name="menu-outline" size={18} color='#3B6EF5' />
-                    <View style={styles.dotBadge} />
+
+                <TouchableOpacity>
+                    <Image source={require('../assets/icons/Messages.png')} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.iconBtnLight}>
-                    <Ionicons name="settings-outline" size={18} color='#3B6EF5' />
+
+                <TouchableOpacity>
+                    <Image source={require('../assets/icons/Frame.png')} />
                 </TouchableOpacity>
             </View>
         </View>
     );
 
-    // ---- Tabs (this drives which screen shows) ----
+
     const Tabs = ({ active, onChange }) => (
         <View style={styles.tabRow}>
             <TouchableOpacity
@@ -124,35 +125,57 @@ const Voucher = () => {
         </View>
     );
 
-    // ---- Voucher ticket card (Active Rewards tab / image 2) ----
-    const VoucherCard = ({ item }) => (
-        <View style={styles.card}>
-            <View style={styles.notch} pointerEvents="none">
-                <View style={[styles.notchCircle, styles.notchLeft]} />
-                <View style={[styles.notchCircle, styles.notchRight]} />
-            </View>
 
-            <View style={styles.cardTopRow}>
-                <Text style={styles.cardLabel}>Voucher</Text>
-                <Text style={styles.validText}>Valid Until {item.validUntil}</Text>
-            </View>
+    const active = ({ item }) => (
+        <View>
+            <View style={{ width: "100%", height: 140, }}>
+                <ImageBackground style={{ flex: 1, }} source={require('../assets/images/Subtraction.png')} resizeMode='contain'>
 
-            <View style={styles.dashedLine} />
 
-            <View style={styles.cardBottomRow}>
-                <View style={styles.iconCircle}>
-                    <Ionicons name={item.icon} size={16} color='#3B6EF5' />
-                </View>
-                <View style={styles.cardTextWrap}>
-                    <Text style={styles.cardTitle}>{item.title}</Text>
-                    <Text style={styles.cardSubtitle}>{item.subtitle}</Text>
-                </View>
-                <TouchableOpacity style={styles.collectedBtn}>
-                    <Text style={styles.collectedText}>Collected</Text>
-                </TouchableOpacity>
+                    <View style={{ position: "absolute", top: 30, left: 20, }}>
+                        <Text style={{ fontSize: 18, fontWeight: "bold", }}>
+                            Voucher
+                        </Text>
+                    </View>
+
+                    <View style={{ width: 100, height: 20, backgroundColor: "#F9F9F9", alignItems: "center", justifyContent: "center", borderRadius: 5, position: "absolute", right: 20, top: 30, }}>
+                        <Text style={{ fontSize: 11, fontWeight: "medium", }}>
+                            {item.time}
+                        </Text>
+                    </View>
+
+                    <View
+                        style={{ borderBottomWidth: 2, borderColor: "#004CFF", borderStyle: "dashed", marginTop: 6, position: "relative", top: 45, marginLeft: 6, marginRight: 5 }}
+                    />
+
+
+
+
+                    <View style={{ position: "absolute", bottom: 30, left: 8 }}>
+                        <View style={{ paddingLeft: 12, flexDirection: "row", alignItems: "center", gap: 8, }}>
+                            <Image source={item.image} />
+                            <Text style={{ fontSize: 17, fontWeight: "bold" }}>
+                                {item.title}
+                            </Text>
+                        </View>
+
+
+                        <Text style={{ paddingLeft: 20, fontSize: 12, fontWeight: "bold", marginTop: 5 }}>
+                            {item.discount}
+                        </Text>
+                    </View>
+
+                    <TouchableOpacity style={{ backgroundColor: '#004CFF', height: 28, width: 80, alignItems: "center", justifyContent: "center", borderRadius: 10, marginRight: 10, position: "absolute", bottom: 20, right: 16 }}>
+                        <Text style={{ fontSize: 14, fontFamily: 'Raleway', fontWeight: "medium", color: "#FFFFFF" }}>
+                            collected
+                        </Text>
+                    </TouchableOpacity>
+
+
+                </ImageBackground>
             </View>
         </View>
-    );
+    )
 
     // ---- Circular progress ring around a badge icon ----
     const ProgressRing = ({ progress, children }) => {
@@ -222,12 +245,9 @@ const Voucher = () => {
 
             {activeTab === 'active' ? (
                 <FlatList
-                    key="active-list"
-                    data={VOUCHERS}
+                    data={Active}
+                    renderItem={active}
                     keyExtractor={(item) => item.id}
-                    renderItem={({ item }) => <VoucherCard item={item} />}
-                    contentContainerStyle={styles.listContent}
-                    showsVerticalScrollIndicator={false}
                 />
             ) : (
                 <FlatList
@@ -279,7 +299,8 @@ const styles = StyleSheet.create({
     },
     headerIcons: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        gap: 20
     },
     iconBtnFilled: {
         width: 34,
@@ -337,9 +358,9 @@ const styles = StyleSheet.create({
 
     // Voucher card
     card: {
-        borderWidth: 1.5,
+        borderWidth: 2,
         borderColor: '#3B6EF5',
-        borderStyle: 'dashed',
+        borderStyle: 'solid',
         borderRadius: 14,
         marginBottom: 16,
         paddingHorizontal: 16,
@@ -384,9 +405,10 @@ const styles = StyleSheet.create({
 
     dashedLine: {
         borderBottomWidth: 1,
-        borderStyle: 'dashed',
-        borderColor: '#ddd',
+        borderStyle: 'dotted',
+        borderColor: '#004CFF',
         marginVertical: 12,
+
     },
 
     cardBottomRow: {

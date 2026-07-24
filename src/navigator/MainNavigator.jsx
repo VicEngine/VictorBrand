@@ -16,6 +16,8 @@ import Product from "../screen/Product";
 import Reviews from "../screen/Reviews";
 import Voucher from "../screen/Voucher";
 import Recieve from "../screen/Recieve";
+import Recentlyviewed from "../screen/Recentlyviewed";
+import Camera from "../screen/Camera";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +39,8 @@ export default function MainNavigator() {
             <Stack.Screen name="Reviews" component={Reviews} />
             <Stack.Screen name="Voucher" component={Voucher} />
             <Stack.Screen name="Recieve" component={Recieve} />
+            <Stack.Screen name="Recentlyviewed" component={Recentlyviewed} />
+            <Stack.Screen name="Camera" component={Camera}/>
         </Stack.Navigator>
     );
 }

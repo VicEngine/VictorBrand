@@ -474,7 +474,7 @@ const Product = () => {
                                 </View>
 
 
-                                <View style={styles.loveContainer}>
+                                <View style={styles.loveContainer1}>
                                     <TouchableOpacity onPress={() => setIsFavorite(!isFavorite)}>
                                         <Image
                                             source={require('../assets/icons/love.png')}
@@ -818,9 +818,18 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         gap: 20,
+        
+    },
+    loveContainer1: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 20,
+        marginTop: 20,
+        position:'relative',
+        bottom:-20
     },
     favoriteIcon: {
-        tintColor:'#000000',
+        tintColor: '#000000',
     },
     favoriteIconSelected: {
         tintColor: '#F81140',
@@ -854,7 +863,7 @@ const styles = StyleSheet.create({
     },
     modstep1: {
         backgroundColor: "#FFFFFF",
-        height: "65%",
+        height: "60%",
     },
     modstep2: {
         width: "100%",
@@ -909,10 +918,10 @@ const styles = StyleSheet.create({
         fontSize: 17,
         fontFamily: 'Raleway',
         fontWeight: "bold",
-
+        marginTop: 1
     },
     modstep8Con: {
-        marginTop: 10,
+        marginTop: 20,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-evenly',
@@ -932,7 +941,7 @@ const styles = StyleSheet.create({
         color: '#004CFF',
     },
     modstep9Con: {
-        marginTop: 15,
+        marginTop: 25,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between'

@@ -98,7 +98,7 @@ const Payment = ({ navigation }) => {
                     </View>
 
                     <TouchableOpacity style={{ backgroundColor: '#004CFF', height: 28, width: 80, alignItems: "center", justifyContent: "center", borderRadius: 10, marginRight: 10, position: "absolute", bottom: 20, right: 16 }}>
-                        <Text>
+                        <Text style={{fontSize:14,fontFamily:'Raleway',fontWeight:"medium",color:"#FFFFFF"}}>
                             Apply
                         </Text>
                     </TouchableOpacity>
