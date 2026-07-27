@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     },
 
     FormInput:{
-        backgroundColor:"#dfdfdf9e",
+        backgroundColor:"#D2D2D2",
         fontSize:13.8,
         fontFamily:"poppins",
         width:335,

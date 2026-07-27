@@ -1,31 +1,29 @@
 {
   "expo": {
-    "name": "Shoppe",
+    "name": "Brand",
     "slug": "Brand",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/images/Group.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/adaptive-icon.png",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.victor_abass.Brand"
+      "edgeToEdgeEnabled": true
     },
     "web": {
-      "favicon": "./src/assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "7592ad7d-64aa-4098-b05f-9d6f66eb8a58"
-      }
-    },
-    "plugins": [
-      "expo-font"
-    ]
+      "favicon": "./assets/favicon.png"
+    }
   }
 }
